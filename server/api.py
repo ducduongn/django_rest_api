@@ -6,15 +6,12 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-
-
-
 @api_view(['GET', 'POST'])
 def student_list(request):
 
     if request.method == 'GET':
         students = Student.objects.all()
-        serializer = StudentSerializer(snippets, many=True)
+        serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
